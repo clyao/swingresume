@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.clyao.resume.core.entity.PersonCheckMapper">
+
+	<resultMap id="personcheckmap" type="com.clyao.resume.core.entity.PersonCheck">
+		<id column="id" property="id"/>
+		<result column="username" property="userName"/>
+		<result column="phone" property="phone"/>
+		<result column="checknum" property="checkNum"/>
+		<result column="ischeck" property="isCheck"/>
+		<result column="createdate" property="createDate"/>
+	</resultMap>
+	
+	<!-- insert语句 -->
+	<insert id="insertPersonCheck" keyProperty="id" parameterType="com.clyao.resume.core.entity.PersonCheck" useGeneratedKeys="true">  
+        insert into LOC_resumecheck (phone, checknum, ischeck, createdate) values (#{phone}, #{checkNum}, #{isCheck}, getdate()) 
+    </insert>
+    
+    <!-- select语句 -->
+    <select id="selectPersonCheck" resultMap="personcheckmap">
+        select top(20) * from LOC_resumecheck order by id desc;
+    </select>
+
+    <!-- select语句 -->
+    <select id="selectPersonCheckByPhone" parameterType="java.lang.String" resultMap="personcheckmap">
+        select top(1) * from LOC_resumecheck where phone=#{phone} and ischeck=0;
+    </select>
+    
+     <!-- update语句 -->
+    <update  id="updatePersonCheckById" parameterType="java.lang.Integer">
+        update LOC_resumecheck set ischeck=1 where id=1;
+    </update>
+    
+</mapper>

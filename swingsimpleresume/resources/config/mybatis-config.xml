@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration> 
+
+    <environments default="development">
+        <environment id="development">
+        <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+            <property name="driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+            <property name="url" value="jdbc:sqlserver://192.168.15.2:1433;DatabaseName=Doss" />
+            <property name="username" value="sa"/>
+            <property name="password" value="iSeelgood"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!-- mybatis的mapper文件，每个xml配置文件对应一个接口 -->
+    <mappers>
+    	<mapper resource="com/clyao/resume/core/entity/PersonCheckMapper.xml"/>
+        <mapper resource="com/clyao/resume/core/entity/PersonMapper.xml"/>
+    </mappers>
+</configuration>

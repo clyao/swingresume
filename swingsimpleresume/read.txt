@@ -1,0 +1,122 @@
+作者：clyao
+版本：V1.0
+时间：2017-03-19
+描述：简历自助查询系统
+
+附录：程序sql
+===============================LOC_zjperson=====================================
+/*
+Navicat SQL Server Data Transfer
+
+Source Server         : 192.168.15.2
+Source Server Version : 105000
+Source Host           : 192.168.15.2:1433
+Source Database       : Doss
+Source Schema         : dbo
+
+Target Server Type    : SQL Server
+Target Server Version : 105000
+File Encoding         : 65001
+
+Date: 2017-03-30 09:23:32
+*/
+
+
+-- ----------------------------
+-- Table structure for LOC_zjperson
+-- ----------------------------
+DROP TABLE [dbo].[LOC_zjperson]
+GO
+CREATE TABLE [dbo].[LOC_zjperson] (
+[userid] int NOT NULL IDENTITY(1,1) NOT FOR REPLICATION ,
+[username] varchar(50) NULL ,
+[sex] varchar(10) NULL ,
+[age] int NULL ,
+[nation] varchar(50) NULL ,
+[phone] varchar(50) NULL ,
+[position] varchar(100) NULL ,
+[workyear] int NULL ,
+[charer] varchar(50) NULL ,
+[marriage] int NULL ,
+[height] int NULL ,
+[school] varchar(50) NULL ,
+[degree] varchar(50) NULL ,
+[address] varchar(50) NULL ,
+[email] varchar(50) NULL ,
+[speciality] varchar(50) NULL ,
+[workdetails] varchar(4000) NULL ,
+[cre_date] smalldatetime NOT NULL ,
+[comflag] bit NULL ,
+[operator] int NULL 
+)
+
+
+GO
+DBCC CHECKIDENT(N'[dbo].[LOC_zjperson]', RESEED, 272244)
+GO
+
+-- ----------------------------
+-- Indexes structure for table LOC_zjperson
+-- ----------------------------
+CREATE INDEX [index_zjperson] ON [dbo].[LOC_zjperson]
+([nation] ASC, [position] ASC, [username] ASC, [sex] ASC) 
+WITH (ALLOW_PAGE_LOCKS = OFF)
+GO
+CREATE INDEX [_dta_index_LOC_zjperson_5_166343707__K18_K20] ON [dbo].[LOC_zjperson]
+([cre_date] ASC, [operator] ASC) 
+GO
+
+-- ----------------------------
+-- Primary Key structure for table LOC_zjperson
+-- ----------------------------
+ALTER TABLE [dbo].[LOC_zjperson] ADD PRIMARY KEY ([userid])
+GO
+
+===============================LOC_resumecheck=================================
+/*
+Navicat SQL Server Data Transfer
+
+Source Server         : 192.168.15.2
+Source Server Version : 105000
+Source Host           : 192.168.15.2:1433
+Source Database       : Doss
+Source Schema         : dbo
+
+Target Server Type    : SQL Server
+Target Server Version : 105000
+File Encoding         : 65001
+
+Date: 2017-03-30 09:23:47
+*/
+
+
+-- ----------------------------
+-- Table structure for LOC_resumecheck
+-- ----------------------------
+DROP TABLE [dbo].[LOC_resumecheck]
+GO
+CREATE TABLE [dbo].[LOC_resumecheck] (
+[id] int NOT NULL IDENTITY(1,1) ,
+[phone] varchar(50) NULL ,
+[checknum] int NULL ,
+[ischeck] int NULL ,
+[createdate] datetime NULL 
+)
+
+
+GO
+DBCC CHECKIDENT(N'[dbo].[LOC_resumecheck]', RESEED, 3)
+GO
+
+-- ----------------------------
+-- Indexes structure for table LOC_resumecheck
+-- ----------------------------
+CREATE INDEX [IX_LOC_resumecheck] ON [dbo].[LOC_resumecheck]
+([id] ASC, [phone] ASC) 
+GO
+
+-- ----------------------------
+-- Primary Key structure for table LOC_resumecheck
+-- ----------------------------
+ALTER TABLE [dbo].[LOC_resumecheck] ADD PRIMARY KEY ([id])
+GO
